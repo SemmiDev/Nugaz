@@ -23,4 +23,4 @@ CREATE TABLE "public"."task" (
 ```
 
 ## Examples request (endpoints)
-https://github.com/SemmiDev/Nugaz/blob/main/request.http
+[Click Here](https://github.com/SemmiDev/Nugaz/blob/main/request.http)
