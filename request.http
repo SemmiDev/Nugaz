@@ -1,0 +1,41 @@
+### CREATE A TASK
+POST http://localhost:9090/api/tasks
+Accept: application/json
+Content-Type: application/json
+
+{
+  "title":  "ngajar",
+  "description": "ngajar",
+  "matrix": "Urgent And Important",
+  "start_at": "2021-10-30T08:38:59+07:00",
+  "due": "2021-10-31T11:29:59+07:00"
+}
+
+### GET A TASK
+GET http://localhost:9090/api/tasks/19245cfd-33df-46b4-a1da-f0904698d110
+Accept: application/json
+
+### LIST TASKS
+GET http://localhost:9090/api/tasks
+Accept: application/json
+
+### UPDATE TASK
+PUT http://localhost:9090/api/tasks/19245cfd-33df-46b4-a1da-f0904698d110
+Accept: application/json
+Content-Type: application/json
+
+{
+  "title":  "ngajar update",
+  "description": "ngajar update",
+  "matrix": "Urgent But Not Important",
+  "start_at": "2021-11-01T08:38:59+07:00",
+  "due": "2021-11-01T11:29:59+07:00"
+}
+
+### UPDATE TASK STATUS TO COMPLETED
+PUT http://localhost:9090/api/tasks/19245cfd-33df-46b4-a1da-f0904698d110/status
+Accept: application/json
+
+### DELETE TASK
+DELETE http://localhost:9090/api/tasks/19245cfd-33df-46b4-a1da-f0904698d110
+Accept: application/json
