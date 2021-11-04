@@ -7,7 +7,7 @@ import (
 )
 
 const createTask = `
-INSERT INTO task (
+INSERT INTO tasks (
     id, 
     title, 
     description,
@@ -79,7 +79,7 @@ SELECT
     due,
     created_at,
     updated_at
-FROM task
+FROM tasks
 WHERE id = $1
 `
 
@@ -116,7 +116,7 @@ SELECT
     due,
     created_at,
     updated_at
-FROM task
+FROM tasks
 `
 
 func (q *Queries) FindAll(ctx context.Context) ([]*entity.Task, error) {
@@ -156,7 +156,7 @@ func (q *Queries) FindAll(ctx context.Context) ([]*entity.Task, error) {
 }
 
 const updateTask = `
-UPDATE task SET
+UPDATE tasks SET
 	title = $2, 
     description = $3,
     is_done = $4,
@@ -213,7 +213,7 @@ func (q *Queries) Update(ctx context.Context, arg *entity.Task) (*entity.Task, e
 }
 
 const updateIsDone = `
-UPDATE task SET
+UPDATE tasks SET
     is_done = $2,
     updated_at = $3
 WHERE id = $1
@@ -259,7 +259,7 @@ func (q *Queries) UpdateIsDone(ctx context.Context, ID string) (*entity.Task, er
 }
 
 const deleteTask = `
-DELETE FROM task WHERE id = $1
+DELETE FROM tasks WHERE id = $1
 `
 
 func (q *Queries) Delete(ctx context.Context, ID string) error {

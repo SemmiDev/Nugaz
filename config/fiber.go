@@ -9,7 +9,7 @@ func Fiber() fiber.Config {
 	return fiber.Config{
 		AppName:      "Nugaz",
 		BodyLimit:    2000,
-		ReadTimeout:  15 * time.Second,
-		WriteTimeout: 15 * time.Second,
+		ReadTimeout:  7 * time.Second,
+		WriteTimeout: 7 * time.Second,
 	}
 }

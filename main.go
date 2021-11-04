@@ -38,7 +38,7 @@ func main() {
 	assignmentController.SetupRoute(app)
 
 	log.Println("Everything is OK ...")
-	if err := app.Listen(config.Port); err != nil {
+	if err := app.Listen(config.AppPort); err != nil {
 		panic(err)
 	}
 }

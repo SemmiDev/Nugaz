@@ -5,23 +5,19 @@ import (
 	"net/http"
 )
 
-type SuccessResponse struct {
+type response struct {
 	Code   int         `json:"code"`
 	Status string      `json:"status"`
 	Data   interface{} `json:"data"`
+	Error  interface{} `json:"error"`
 }
 
-type Error struct {
-	Msg string `json:"error_msg"`
-}
-
-func ErrorResponse(c *fiber.Ctx, status int, err error) error {
+func ApiResponse(c *fiber.Ctx, status int, data interface{}, err error) error {
 	c.Status(status)
-	return c.JSON(SuccessResponse{
+	return c.JSON(response{
 		Code:   status,
 		Status: http.StatusText(status),
-		Data: Error{
-			Msg: err.Error(),
-		},
+		Data:   data,
+		Error:  err.Error(),
 	})
 }

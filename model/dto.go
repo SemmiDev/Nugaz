@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+var ErrParseTime = errors.New("can't parse time request")
+
 func CreateTaskReqToTask(t *CreateTaskReq) (*entity.Task, error) {
 	r := new(entity.Task)
 
@@ -17,14 +19,14 @@ func CreateTaskReqToTask(t *CreateTaskReq) (*entity.Task, error) {
 	// start at
 	start, err := time.Parse(time.RFC3339, t.StartAt)
 	if err != nil {
-		return nil, errors.New("can't parse time req")
+		return nil, ErrParseTime
 	}
 	startInLoc := start.In(loc).Unix()
 
 	// ends at
 	due, err := time.Parse(time.RFC3339, t.Due)
 	if err != nil {
-		return nil, errors.New("can't parse time req")
+		return nil, ErrParseTime
 	}
 	dueInLoc := due.In(loc).Unix()
 
@@ -68,14 +70,14 @@ func UpdateTaskReqToTask(t *UpdateTaskReq) (*entity.Task, error) {
 	// start at
 	start, err := time.Parse(time.RFC3339, t.StartAt)
 	if err != nil {
-		return nil, errors.New("can't parse time req")
+		return nil, ErrParseTime
 	}
 	startInLoc := start.In(loc).Unix()
 
 	// ends at
 	due, err := time.Parse(time.RFC3339, t.Due)
 	if err != nil {
-		return nil, errors.New("can't parse time req")
+		return nil, ErrParseTime
 	}
 	dueInLoc := due.In(loc).Unix()
 
